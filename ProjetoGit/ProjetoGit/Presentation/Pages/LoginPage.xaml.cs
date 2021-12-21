@@ -13,7 +13,8 @@ namespace ProjetoGit.Presentation.Pages
             // TODO: add some dependency injection tool
             BindingContext = new LoginViewModel(
                 new SecureStorageService(),
-                new Githubservices(new RequestProvider())
+                new Githubservices(new RequestProvider()),
+                new DialogService()
                 );
         }
     }

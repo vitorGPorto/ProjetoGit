@@ -24,7 +24,8 @@
                         <StackLayout Margin="20,35,20,20">
                             <Entry Text="{Binding Token, Mode=OneWayToSource}"
                                    Placeholder="Token:"
-                                   VerticalOptions="CenterAndExpand" />
+                                   VerticalOptions="CenterAndExpand"
+                                   ReturnCommand="{Binding LoginCommand}"/>
                         </StackLayout>
                         <Button Text="Login"
                                 Command="{Binding LoginCommand}"

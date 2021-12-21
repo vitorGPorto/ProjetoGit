@@ -15,11 +15,13 @@ namespace ProjetoGit.ViewModel
 
         private ISecureStorageService _secureStorageService;
         private IGithubService _githubService;
+        private IDialogService _dialogService;
 
-        public LoginViewModel(ISecureStorageService secureStorageService, IGithubService githubService)
+        public LoginViewModel(ISecureStorageService secureStorageService, IGithubService githubService, IDialogService dialogService)
         {
             _secureStorageService = secureStorageService;
             _githubService = githubService;
+            _dialogService = dialogService;
 
             LoginCommand =  new Command(async ()=> await LoginCommandAction());
         }
@@ -35,12 +37,13 @@ namespace ProjetoGit.ViewModel
             if (authenticatedUser != null)
             {
                 await _secureStorageService.SaveToken(Token);
-                // success message
-                // redirect to new page
+                await _dialogService.ShowAlertAsync("Your token is valid!", "Sucess", "OK");
+
+                // TODO: redirect to new page
             }
             else
             {
-                // fail message;
+                await _dialogService.ShowAlertAsync("Your token is invalid!", "Attention", "OK");
             }
 
             IsBusy = false;
