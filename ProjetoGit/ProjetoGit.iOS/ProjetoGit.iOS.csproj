@@ -128,11 +128,14 @@
     </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+    <PackageReference Include="Xamarin.Forms.Visual.Material">
+      <Version>5.0.0.2012</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\ProjetoGit\ProjetoGit.csproj">
-      <Project>{744E2144-2EB3-46AE-AEEA-0B5FA9082412}</Project>
+      <Project>{72C5D7F0-5253-49CB-A4BB-01035EA80DB5}</Project>
       <Name>ProjetoGit</Name>
     </ProjectReference>
   </ItemGroup>
