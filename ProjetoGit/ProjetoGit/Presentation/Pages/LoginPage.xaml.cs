@@ -1,4 +1,6 @@
-﻿using ProjetoGit.ViewModel;
+﻿using ProjetoGit.Services;
+using ProjetoGit.Services.Api;
+using ProjetoGit.ViewModel;
 using Xamarin.Forms;
 
 namespace ProjetoGit.Presentation.Pages
@@ -8,7 +10,11 @@ namespace ProjetoGit.Presentation.Pages
         public LoginPage()
         {
             InitializeComponent();
-            BindingContext = new LoginViewModel();
+            // TODO: add some dependency injection tool
+            BindingContext = new LoginViewModel(
+                new SecureStorageService(),
+                new Githubservices(new RequestProvider())
+                );
         }
     }
 }

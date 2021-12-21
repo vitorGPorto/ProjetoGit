@@ -1,4 +1,5 @@
 ﻿using ProjetoGit.Services;
+using ProjetoGit.Services.Api;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -12,15 +13,37 @@ namespace ProjetoGit.ViewModel
 
         public ICommand LoginCommand { get; set; }
 
-        public LoginViewModel()
+        private ISecureStorageService _secureStorageService;
+        private IGithubService _githubService;
+
+        public LoginViewModel(ISecureStorageService secureStorageService, IGithubService githubService)
         {
+            _secureStorageService = secureStorageService;
+            _githubService = githubService;
+
             LoginCommand =  new Command(async ()=> await LoginCommandAction());
         }
 
         private async Task LoginCommandAction()
         {
-            var apiService = new Githubservices();
-            await apiService.GetGithubProfile("aismaniotto");
+            // TODO: implement loader on page using this property
+            IsBusy = true;
+
+            // validar
+            // request api
+            var authenticatedUser = await _githubService.GetAuthenticatedUser(Token);
+            if (authenticatedUser != null)
+            {
+                await _secureStorageService.SaveToken(Token);
+                // success message
+                // redirect to new page
+            }
+            else
+            {
+                // fail message;
+            }
+
+            IsBusy = false;
         }
     }
 }

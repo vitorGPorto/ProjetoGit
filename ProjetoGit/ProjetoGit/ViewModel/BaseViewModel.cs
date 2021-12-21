@@ -7,6 +7,13 @@ namespace ProjetoGit.ViewModel
 {
     public class BaseViewModel : INotifyPropertyChanged
 	{
+        private bool _isBusy;
+        public bool IsBusy
+        {
+            get { return _isBusy; }
+            set { SetProperty(ref _isBusy, value); }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
