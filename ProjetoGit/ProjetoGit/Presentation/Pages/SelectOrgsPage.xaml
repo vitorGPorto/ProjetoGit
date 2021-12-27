@@ -4,7 +4,7 @@
              x:Class="ProjetoGit.Presentation.Pages.SelectOrgsPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
+            <Label Text="Pages orgs"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
         </StackLayout>
