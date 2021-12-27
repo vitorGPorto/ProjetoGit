@@ -21,11 +21,22 @@
   <ItemGroup>
     <Folder Include="Model\" />
     <Folder Include="ViewModel\" />
-    <Folder Include="Presentation\" />
-    <Folder Include="Presentation\Pages\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Presentation\Pages\" />
     <None Remove="Xamarin.Forms.Visual.Material" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Presentation\Pages\SelectRepoPage.xaml.cs">
+      <DependentUpon>SelectRepoPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Presentation\Pages\SelectOrgsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Presentation\Pages\SelectRepoPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

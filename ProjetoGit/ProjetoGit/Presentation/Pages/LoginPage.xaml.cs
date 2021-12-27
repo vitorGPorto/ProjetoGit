@@ -14,8 +14,14 @@ namespace ProjetoGit.Presentation.Pages
             BindingContext = new LoginViewModel(
                 new SecureStorageService(),
                 new Githubservices(new RequestProvider()),
-                new DialogService()
+                new DialogService(),
+                new NavigationService()
                 );
+
+        }
+        public async void teste()
+        {
+            await Navigation.PushAsync(new SelectRepoPage());
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using ProjetoGit.Services;
+﻿using ProjetoGit.Presentation.Pages;
+using ProjetoGit.Services;
 using ProjetoGit.Services.Api;
 using System;
 using System.Threading.Tasks;
@@ -16,12 +17,13 @@ namespace ProjetoGit.ViewModel
         private ISecureStorageService _secureStorageService;
         private IGithubService _githubService;
         private IDialogService _dialogService;
-
-        public LoginViewModel(ISecureStorageService secureStorageService, IGithubService githubService, IDialogService dialogService)
+        private INavigationService _navigationService;
+        public LoginViewModel(ISecureStorageService secureStorageService, IGithubService githubService, IDialogService dialogService, INavigationService navigationService)
         {
             _secureStorageService = secureStorageService;
             _githubService = githubService;
             _dialogService = dialogService;
+            _navigationService = navigationService;
 
             LoginCommand =  new Command(async ()=> await LoginCommandAction());
         }
@@ -37,10 +39,13 @@ namespace ProjetoGit.ViewModel
             if (authenticatedUser != null)
             {
                 await _secureStorageService.SaveToken(Token);
-                await _dialogService.ShowAlertAsync("Your token is valid!", "Sucess", "OK");
+               // await _dialogService.ShowAlertAsync("Your token is valid!", "Sucess", "OK");
 
+                
                 // TODO: redirect to new page
-            }
+               await _navigationService.GoTo(new SelectOrgsPage());
+               
+                            }
             else
             {
                 await _dialogService.ShowAlertAsync("Your token is invalid!", "Attention", "OK");
