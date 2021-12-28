@@ -15,6 +15,16 @@ namespace ProjetoGit.Presentation.Pages
         public SelectOrgsPage()
         {
             InitializeComponent();
+            List<String> itens = new List<String>()
+            {
+                "Palmeiras", "Flamengo", "Atlético", "Santos", "Fluminense"
+            };
+            organizacao.ItemsSource = itens;
+        }
+
+        private void organizacao_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            DisplayAlert("Item selecionado ", e.SelectedItem.ToString(), "OK");
         }
     }
 }

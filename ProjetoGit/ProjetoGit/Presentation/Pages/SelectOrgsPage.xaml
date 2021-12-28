@@ -1,12 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ProjetoGit.Presentation.Pages.SelectOrgsPage">
+             x:Class="ProjetoGit.Presentation.Pages.SelectOrgsPage"
+             Background="#252C4A">
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Pages orgs"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
+            <ListView x:Name="organizacao" ItemSelected="organizacao_ItemSelected"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
