@@ -1,4 +1,5 @@
-﻿using ProjetoGit.Presentation.Pages;
+﻿using Acr.UserDialogs;
+using ProjetoGit.Presentation.Pages;
 using ProjetoGit.Services;
 using ProjetoGit.Services.Api;
 using System;
@@ -31,11 +32,13 @@ namespace ProjetoGit.ViewModel
         private async Task LoginCommandAction()
         {
             // TODO: implement loader on page using this property
+            UserDialogs.Instance.ShowLoading("Processing..");
             IsBusy = true;
 
             // validar
             // request api
             var authenticatedUser = await _githubService.GetAuthenticatedUser(Token);
+            UserDialogs.Instance.HideLoading();
             if (authenticatedUser != null)
             {
                 await _secureStorageService.SaveToken(Token);
@@ -45,7 +48,7 @@ namespace ProjetoGit.ViewModel
                 // TODO: redirect to new page
                await _navigationService.GoTo(new SelectOrgsPage());
                
-                            }
+            }
             else
             {
                 await _dialogService.ShowAlertAsync("Your token is invalid!", "Attention", "OK");

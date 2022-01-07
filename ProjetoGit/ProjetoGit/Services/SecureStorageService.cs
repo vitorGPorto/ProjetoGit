@@ -14,7 +14,7 @@ namespace ProjetoGit.Services
 
         public async Task<string> SaveToken(string token)
         {
-            await SecureStorage.SetAsync(TOKEN_KEY, "secret-oauth-token-value");
+            await SecureStorage.SetAsync(TOKEN_KEY, token);
             return token;
         }
 

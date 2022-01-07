@@ -1,4 +1,7 @@
-﻿using System;
+﻿using ProjetoGit.Services;
+using ProjetoGit.Services.Api;
+using ProjetoGit.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,19 +15,31 @@ namespace ProjetoGit.Presentation.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SelectOrgsPage : ContentPage
     {
+
+       
         public SelectOrgsPage()
         {
             InitializeComponent();
-            List<String> itens = new List<String>()
-            {
-                "Palmeiras", "Flamengo", "Atlético", "Santos", "Fluminense"
-            };
-            organizacao.ItemsSource = itens;
+
+            // TODO: add some dependency injection tool
+            BindingContext = new OrgsViewModel(
+                new SecureStorageService(),
+                new DialogService(),
+                new NavigationService(),
+                new Githubservices(new RequestProvider())
+                );
         }
 
-        private void organizacao_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private void ContentPage_Appearing(object sender, EventArgs e)
         {
-            DisplayAlert("Item selecionado ", e.SelectedItem.ToString(), "OK");
+
+        }
+
+        private void Items_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+          
+
+           
         }
     }
 }

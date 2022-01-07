@@ -20,7 +20,7 @@ namespace ProjetoGit.Services.Api
         {
             _serializerSettings = new JsonSerializerSettings
             {
-                ContractResolver = new CamelCasePropertyNamesContractResolver(),
+                ContractResolver = new DefaultContractResolver { NamingStrategy = new SnakeCaseNamingStrategy() },
                 DateTimeZoneHandling = DateTimeZoneHandling.Utc,
                 NullValueHandling = NullValueHandling.Ignore
             };
@@ -105,5 +105,7 @@ namespace ProjetoGit.Services.Api
                 throw new Exception(content);
             }
         }
+
+
     }
 }

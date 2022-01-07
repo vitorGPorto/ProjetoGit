@@ -1,14 +1,82 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              x:Class="ProjetoGit.Presentation.Pages.SelectOrgsPage"
-             Background="#252C4A">
+             Background="#252C4A"
+             Title="ORGANIZATIONS"
+             >
+    <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior
+                    EventName="Appearing"
+                    Command="{Binding OrgsCommand}"
+                        />
+    </ContentPage.Behaviors>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Pages orgs"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-            <ListView x:Name="organizacao" ItemSelected="organizacao_ItemSelected"/>
+
+        <StackLayout Margin="5">
+            <Label 
+                Text="User:"
+                FontSize="20"
+                TextColor="AliceBlue"
+                HorizontalOptions="Fill"
+                Margin="10,0,0,0"
+                   />
+            <ListView 
+                CachingStrategy="RecycleElement"
+                x:Name="Items" 
+                ItemsSource="{Binding OrganizationList}"
+                BackgroundColor="Transparent"
+                HasUnevenRows="True"
+                SeparatorVisibility="None"
+                
+                >
+                <ListView.ItemTemplate>
+                    <DataTemplate >
+                        <ViewCell>
+                            <!--<Frame 
+                                 CornerRadius="7"
+                                 HasShadow="True" 
+                                 Padding="8"
+                                 Margin="8"
+                             >-->
+                                <StackLayout Orientation="Horizontal" >
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding SelectCommand}"/>
+                                    </StackLayout.GestureRecognizers>
+                                    <Image 
+                                            Source="{Binding AvatarUrl}"
+                                            WidthRequest="66"
+                                            
+                                            />
+                                    <StackLayout VerticalOptions="Center">
+                                        <Label 
+                                                    VerticalOptions="Center" 
+                                                    FontSize="Large"
+                                                    Text="{Binding Login}"
+                                                    
+                                              />
+                                        <Label 
+                                                    VerticalOptions="Center" 
+                                                    FontSize="11"
+                                                    Text="{Binding Description}"
+                                              />
+                                    </StackLayout>
+                                </StackLayout>
+                            <!--</Frame>-->
+                        </ViewCell>
+                        <!--  <ImageCell 
+                                   Text="{Binding Login}"
+                                   Detail="{Binding Description}"
+                                   ImageSource="{Binding AvatarUrl}"
+                                   TextColor="#FFFF"
+                                   DetailColor="Gray"  
+                                   Command="{Binding SelectCommand}"
+                                   
+                            />-->
+                    </DataTemplate>
+                </ListView.ItemTemplate >
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

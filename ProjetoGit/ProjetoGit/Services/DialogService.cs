@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace ProjetoGit.Services
 {
-    public class DialogService :  IDialogService
+    public class DialogService : IDialogService
     {
         public async Task ShowAlertAsync(string message, string title, string buttonLabel)
         {

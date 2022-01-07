@@ -12,8 +12,8 @@
                 <Frame BackgroundColor="#252C4A" HeightRequest="150" HorizontalOptions="FillAndExpand">
                 </Frame>
             </StackLayout>
-            <StackLayout Margin="15,150,15,0">
-                <Frame BackgroundColor="#FFF" HasShadow="True" HeightRequest="380" HorizontalOptions="FillAndExpand">
+            <StackLayout Margin="15,100,15,0">
+                <Frame BackgroundColor="#FFF" HasShadow="True" HeightRequest="360" HorizontalOptions="FillAndExpand">
                     <StackLayout HorizontalOptions="Center" Margin="15,0,15,0">
                         <Image Source="https://1000logos.net/wp-content/uploads/2018/08/GitHub-cat-logo.jpg"/>
                         <Label Text="Informe token do GitHub"
