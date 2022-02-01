@@ -7,7 +7,8 @@ namespace ProjetoGit.Services
     public class SecureStorageService : ISecureStorageService
     {
         const string TOKEN_KEY = "secure_token";
-
+        const string Login = "secure_login";
+        const string AvatarUrl = "secure_AvatarUrl";
         public SecureStorageService()
         {
         }
@@ -34,6 +35,27 @@ namespace ProjetoGit.Services
             {
                 return Task.Run(() => false);
             }
+        }
+
+        public async Task<string> SaveUser(string login)
+        {
+            await SecureStorage.SetAsync(Login, login);
+            return login;
+        }
+
+        public async Task<string> GetUser()
+        {
+            return await SecureStorage.GetAsync(Login);
+        }
+        public async Task<string> SaveAvatarUrl(string avatarUrl)
+        {
+            await SecureStorage.SetAsync(AvatarUrl, avatarUrl);
+            return AvatarUrl;
+        }
+
+        public async Task<string> GetAvatarUrl()
+        {
+            return await SecureStorage.GetAsync(AvatarUrl);
         }
     }
 }

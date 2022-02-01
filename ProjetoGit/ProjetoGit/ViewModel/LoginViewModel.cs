@@ -12,7 +12,7 @@ namespace ProjetoGit.ViewModel
     public class LoginViewModel : BaseViewModel
     {
         public string Token { get; set; }
-
+        
         public ICommand LoginCommand { get; set; }
 
         private ISecureStorageService _secureStorageService;
@@ -42,11 +42,14 @@ namespace ProjetoGit.ViewModel
             if (authenticatedUser != null)
             {
                 await _secureStorageService.SaveToken(Token);
-               // await _dialogService.ShowAlertAsync("Your token is valid!", "Sucess", "OK");
+                await _secureStorageService.SaveUser(authenticatedUser.Login);
+                await _secureStorageService.SaveAvatarUrl(authenticatedUser.AvatarUrl);
+                //await _secureStorageService.
+                // await _dialogService.ShowAlertAsync("Your token is valid!", "Sucess", "OK");
 
-                
+
                 // TODO: redirect to new page
-               await _navigationService.GoTo(new SelectOrgsPage());
+                await _navigationService.GoTo(new SelectOrgsPage());
                
             }
             else

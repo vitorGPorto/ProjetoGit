@@ -53,11 +53,13 @@ namespace ProjetoGit.ViewModel
         {
 
             UserDialogs.Instance.ShowLoading("Processing..");
+           
             var listOrganization = await _githubService.GetListOrganization(await _secureStorageService.GetToken());
+            
 
-            if (listOrganization != null )
+            if ( listOrganization != null )
             {
-               
+                
                 OrganizationList = listOrganization;
               
             }

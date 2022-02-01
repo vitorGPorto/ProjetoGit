@@ -8,5 +8,11 @@ namespace ProjetoGit.Services
         Task<string> SaveToken(string token);
         Task<string> GetToken();
         Task<bool> DeleteToken();
+
+        Task<string> SaveUser(string login);
+        Task<string> GetUser();
+
+        Task<string> SaveAvatarUrl(string avatarUrl);
+        Task<string> GetAvatarUrl();
     }
 }

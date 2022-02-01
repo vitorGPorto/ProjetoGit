@@ -5,6 +5,7 @@
              x:Class="ProjetoGit.Presentation.Pages.SelectOrgsPage"
              Background="#252C4A"
              Title="ORGANIZATIONS"
+             x:Name="cantentPage"
              >
     <ContentPage.Behaviors>
         <xct:EventToCommandBehavior
@@ -34,16 +35,16 @@
                 <ListView.ItemTemplate>
                     <DataTemplate >
                         <ViewCell>
-                            <!--<Frame 
+                           <Frame 
                                  CornerRadius="7"
                                  HasShadow="True" 
                                  Padding="8"
                                  Margin="8"
-                             >-->
+                             >
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding BindingContext.SelectCommand, Source={x:Reference cantentPage} }"/>
+                                 </Frame.GestureRecognizers>
                                 <StackLayout Orientation="Horizontal" >
-                                    <StackLayout.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding SelectCommand}"/>
-                                    </StackLayout.GestureRecognizers>
                                     <Image 
                                             Source="{Binding AvatarUrl}"
                                             WidthRequest="66"
@@ -63,7 +64,7 @@
                                               />
                                     </StackLayout>
                                 </StackLayout>
-                            <!--</Frame>-->
+                            </Frame>
                         </ViewCell>
                         <!--  <ImageCell 
                                    Text="{Binding Login}"

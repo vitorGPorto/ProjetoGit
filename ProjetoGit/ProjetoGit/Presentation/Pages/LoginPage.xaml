@@ -2,7 +2,7 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Title="Login"
+    Title="LOGIN"
     Background="#252C4A"
     x:Class="ProjetoGit.Presentation.Pages.LoginPage">
     <ContentPage.Content>
@@ -16,7 +16,7 @@
                 <Frame BackgroundColor="#FFF" HasShadow="True" HeightRequest="360" HorizontalOptions="FillAndExpand">
                     <StackLayout HorizontalOptions="Center" Margin="15,0,15,0">
                         <Image Source="https://1000logos.net/wp-content/uploads/2018/08/GitHub-cat-logo.jpg"/>
-                        <Label Text="Informe token do GitHub"
+                            <Label Text="Enter GitHub Token"
                                TextColor="Black"
                                FontSize="Medium"
                                FontAttributes="Bold"
