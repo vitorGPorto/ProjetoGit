@@ -1,6 +1,5 @@
-﻿using System;
+﻿using ProjetoGit.Presentation.Pages;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace ProjetoGit
 {
@@ -10,7 +9,7 @@ namespace ProjetoGit
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new LoginPage());
         }
 
         protected override void OnStart()
